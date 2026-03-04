@@ -1,15 +1,25 @@
-package main // packages are go's ways of organizing code similar to modules or libraries in other languages
-// the main() function can only be in the main package
+package main
 
 import "fmt"
 
 func main() {
-	fmt.Println("Hello world") //Println is the functino within the fmt package that writes to the std output
-	// Println starts with capital P sicne any symbol starting with capital letters Uppercase → exported (accessible from other packages)
-	// if its lowercase, its not accesible outside of the package
+	greeting := greet("en")
+	fmt.Println(greeting)
 }
 
-// // some notes for idiomacy
-// if scope of variable is limited to two to three lines, one or two letter placeholders are fine
-// consistency between functions
-// go is camelCase
+// language represents the language's code
+// type safety and it enhances readabiolity
+type language string
+
+// greet says hello to the world in the specified language
+// the inpuyt language will be a string that represents a language
+func greet(l language) string {
+	switch l {
+	case "en":
+		return "Hello world"
+	case "fr":
+		return "Bonjour le monde"
+	default:
+		return ""
+	}
+}
