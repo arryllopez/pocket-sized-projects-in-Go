@@ -40,6 +40,7 @@ func findCommonBooks(bookworms []Bookworm) []Book {
 func booksCount(bookworms []Bookworm) map[Book]uint {
 	count := make(map[Book]uint)
 
+	// increment the count for each book in each bookworm's collection
 	for _, bookworm := range bookworms {
 		for _, book := range bookworm.Books {
 			count[book]++

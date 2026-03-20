@@ -84,6 +84,43 @@ func equalBooks(t *testing.T, books, target []Book) bool {
     }
     return true
 }
+
+func equalBooksCount(t*testing.T, got, want map[Book]uint) bool {
+    t.Helper()
+
+    if len(got) != len(want) {
+        return false
+    }
+
+    for book, targetCount := range want { 
+        count, ok := got[book] 
+        if !ok || targetCount != count { 
+            return false
+        }
+    }
+    return true
+}
+
+func TestBooksCount (t *testing.T) {
+    tt := map[string] struct { 
+        input []Bookworm
+        want map[Book]uint
+    }{
+        "nominal use case": { 
+            input: []Bookworm{
+                {Name: "Fadi", Books: []Book{handmaidsTale, theBellJar}},
+                {Name: "Peggy", Books: []Book{oryxAndCrake, handmaidsTale, janeEyre}},
+        },
+        want : map[Book]uint{
+            handmaidsTale: 2,
+            theBellJar: 1,
+            oryxAndCrake: 1,
+            janeEyre: 1,
+        },
+    }
+
+
+} 
 // // type hinting by giving the struct a name
 // type testCase struct {
 //     bookwormsFile string
