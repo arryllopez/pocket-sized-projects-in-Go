@@ -52,6 +52,38 @@ func TestLoadBookworms_Success(t *testing.T) {
     }
 }
 
+func equalBookworms(t *testing.T, bookworms, target []Bookworm) bool { 
+    t.Helper()  //marks this function as a helper
+
+    if len(bookworms) != len(target) {
+        return false
+    }
+
+    for i := range bookworms { 
+        if bookworms[i].Name != target[i].Name { 
+            return False 
+        }
+
+        if !equalBooks(t, bookworms[i].Books, target[i].Books) {
+            return false
+        }
+    }
+    return true
+}
+
+func equalBooks(t *testing.T, books, target []Book) bool {
+    t.Helper()
+
+    if len(books) != len(target) { 
+        return false 
+    }
+    for i := range books { 
+        if books[i] != target[i] {
+            return false
+        }
+    }
+    return true
+}
 // // type hinting by giving the struct a name
 // type testCase struct {
 //     bookwormsFile string

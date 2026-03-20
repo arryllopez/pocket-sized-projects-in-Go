@@ -32,3 +32,19 @@ func loadBookworms(filePath string) ([]Bookworm, error) {
 	return bookworms, nil
 
 }
+
+func findCommonBooks(bookworms []Bookworm) []Book {
+	return nil
+}
+
+func booksCount(bookworms []Bookworm) map[Book]uint {
+	count := make(map[Book]uint)
+
+	for _, bookworm := range bookworms {
+		for _, book := range bookworm.Books {
+			count[book]++
+		}
+	}
+
+	return count
+}
