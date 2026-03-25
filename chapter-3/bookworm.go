@@ -49,3 +49,18 @@ func booksCount(bookworms []Bookworm) map[Book]uint {
 
 	return count
 }
+
+func findCommonBooks(bookworms []Bookworm) []Book {
+	booksOnShelves := booksCount(bookworms) 
+	// declaring a slice to hold the books that were found multiple times in teh bookworms' collections
+	// slices in golang are dynamically sized, unlike arrays which have a fixed size . 
+	// slices have three fields -- a pointer to the underlying array, the length of the slice, and the capacity of the slice.
+	// length is the number of elements within the slice
+	// and the capacity is how much elements the slice can store before dynamically resizing itself.
+	// len and cap functions can be used to get the length and capacity of a slice, respectively, only when the slice is initialized with make
+	var commonBooks []Book
+
+	// 
+
+	return nil
+} 

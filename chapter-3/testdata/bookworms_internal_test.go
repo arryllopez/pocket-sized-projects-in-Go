@@ -117,9 +117,22 @@ func TestBooksCount (t *testing.T) {
             oryxAndCrake: 1,
             janeEyre: 1,
         },
+        "no bookworms": { 
+            input: []Bookworm{},
+            want: map[Book]uint{},
+        }, 
+        "bookworms with no books": {...}, 
+        "bookworm with twice the same book": {...},
     }
 
-
+    for name, tc := range tt {
+        t.Run(name, func(t *testing.T) {
+            got := booksCount(tc.input)
+            if !equalBooksCount(t, got, tc.want) {
+                t.Fatalf("different result: got %v, expected %v", got, tc.want)
+            }
+        })
+    }
 } 
 // // type hinting by giving the struct a name
 // type testCase struct {
